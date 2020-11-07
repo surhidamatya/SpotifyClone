@@ -7,16 +7,17 @@ Trademarks rights owned by —
 
 ## Setup
 
-Make sure you dart and flutter plugin installed
+Make sure you have installed dart and flutter plugin installed
 
 ```bash
 flutter pub get
 ```
 
-For the audio player to work. Create a folder called ```assets``` in the root folder.
-1. add a media file
-2. change ```bandName``` and ```albumName``` in ```constants.dart```
-3. change ```coverUrl``` in ```constants.dart```
+For the audio player to work.
+1. Create a folder called ```assets``` in the root folder.
+2. add a media file in ```assets``` folder
+3. change ```bandName``` and ```albumName``` in ```constants.dart```
+4. change ```coverUrl``` in ```constants.dart```
 
 **Packages being used:**
 
