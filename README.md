@@ -2,7 +2,14 @@
 
 This project is just build to practice flutter development for educational purpose.
 Please don't to mess up with any kind of commercial and illegal activities related to the Trademarks/Images and Copyrights used in this Project.
-Trademarks rights owned by —  ## [https://www.spotify.com/] (Spotify Technology S.A)
+Trademarks rights owned by —
+## [https://www.spotify.com/] (Spotify Technology S.A)
+
+**Packages being used:**
+
+- audioplayers: [link](https://pub.dev/packages/audioplayers)
+- line_icons: [link](https://pub.dev/packages/line_icons)
+
 
 ## Getting Started
 
