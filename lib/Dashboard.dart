@@ -53,7 +53,7 @@ class _DashboardPageState extends State<DashboardPage> {
       statusBarColor: Colors.transparent,
     ));
     return Scaffold(
-      body: Container(
+      body:  SafeArea(child:Container(
         padding: EdgeInsets.only(
           left: 10,
           right: 10,
@@ -290,6 +290,7 @@ class _DashboardPageState extends State<DashboardPage> {
           ),
         ),
       ),
+    ),
     );
   }
 }
