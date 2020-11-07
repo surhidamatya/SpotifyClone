@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:spotify_clone/constants.dart';
 import 'package:spotify_clone/theme.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -84,11 +85,11 @@ class _DashboardPageState extends State<DashboardPage> {
                   Column(
                     children: <Widget>[
                       Text(
-                        "PLAYING FROM ALBUM",
+                        playingFrom,
                         style: DashBoardTextStyles.smallText.copyWith(color: Colors.white)
                       ),
                       Text(
-                        'Taal ko paani',
+                        albumName,
                         style: DashBoardTextStyles.extraSmallText.copyWith(color: Colors.white)
                       ),
                     ],
@@ -107,7 +108,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRaOhO6RR-jghhMuPq4WASqnS3plRFuR8mS5A&usqp=CAU"),
+                     coverUrl),
                 ),
                 width: 325,
               ),
@@ -124,11 +125,11 @@ class _DashboardPageState extends State<DashboardPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          "Taal ko Paani",
+                         albumName,
                           style: DashBoardTextStyles.mediumBoldText.copyWith(color: Colors.white)
                         ),
                         Text(
-                          "Nepathya",
+                          bandName,
                           style: DashBoardTextStyles.smallText.copyWith(color:  Colors.grey.shade400,)
                         ),
                       ],
