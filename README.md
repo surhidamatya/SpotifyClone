@@ -12,3 +12,5 @@ Trademarks rights owned by —
 
 ### Previews of UI
 ![Preview](/spotify_player.png)
+
+## Music and music cover are copuright by band [Nepathya](http://nepathya.com.np/)
