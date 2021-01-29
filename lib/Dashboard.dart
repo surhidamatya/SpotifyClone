@@ -15,8 +15,8 @@ class _DashboardPageState extends State<DashboardPage> {
   bool isHeartPressed = false;
   bool isPlayPressed = false;
   // double _value = 0;
-  Duration _duration = new Duration();
-  Duration _position = new Duration();
+  Duration _duration = Duration();
+  Duration _position = Duration();
   AudioPlayer advancedPlayer;
   AudioCache audioCache;
 
@@ -27,8 +27,8 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   void initPlayer() {
-    advancedPlayer = new AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: advancedPlayer);
+    advancedPlayer = AudioPlayer();
+    audioCache = AudioCache(fixedPlayer: advancedPlayer);
     // ignore: deprecated_member_use
     advancedPlayer.durationHandler = (d) => setState(() => _duration = d);
     // ignore: deprecated_member_use
@@ -53,244 +53,241 @@ class _DashboardPageState extends State<DashboardPage> {
       statusBarColor: Colors.transparent,
     ));
     return Scaffold(
-      body:  SafeArea(child:Container(
-        padding: EdgeInsets.only(
-          left: 10,
-          right: 10,
-          top: 40,
-        ),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            colors: [
-              Colors.brown,
-              Colors.black87,
-            ],
-            end: Alignment.bottomCenter,
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.only(
+            left: 10,
+            right: 10,
+            top: 40,
           ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Icon(
-                    LineIcons.angle_down,
-                    color: Colors.white,
-                    size: 24,
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        playingFrom,
-                        style: DashBoardTextStyles.smallText.copyWith(color: Colors.white)
-                      ),
-                      Text(
-                        albumName,
-                        style: DashBoardTextStyles.extraSmallText.copyWith(color: Colors.white)
-                      ),
-                    ],
-                  ),
-                  Icon(
-                    LineIcons.ellipsis_v,
-                    color: Colors.white,
-                    size: 24,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              Container(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                     coverUrl),
-                ),
-                width: 325,
-              ),
-              SizedBox(
-                height: 100,
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 25, right: 25),
-                width: double.infinity,
-                child: Row(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                Colors.brown,
+                Colors.black87,
+              ],
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
+                    Icon(
+                      LineIcons.angle_down,
+                      color: Colors.white,
+                      size: 24,
+                    ),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                         albumName,
-                          style: DashBoardTextStyles.mediumBoldText.copyWith(color: Colors.white)
-                        ),
-                        Text(
-                          bandName,
-                          style: DashBoardTextStyles.smallText.copyWith(color:  Colors.grey.shade400,)
-                        ),
+                        Text(playingFrom,
+                            style: DashBoardTextStyles.smallText
+                                .copyWith(color: Colors.white)),
+                        Text(albumName,
+                            style: DashBoardTextStyles.extraSmallText
+                                .copyWith(color: Colors.white)),
                       ],
                     ),
-                    IconButton(
-                      icon: (isHeartPressed == true)
-                          ? Icon(
-                        LineIcons.heart,
-                        color: Colors.green,
-                        size: 30,
-                      )
-                          : Icon(
-                        LineIcons.heart_o,
-                        color: Colors.grey.shade400,
-                        size: 30,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          isHeartPressed =
-                          (isHeartPressed == false) ? true : false;
-                        });
-                      },
-                    ),
+                    Icon(
+                      LineIcons.ellipsis_v,
+                      color: Colors.white,
+                      size: 24,
+                    )
                   ],
                 ),
-              ),
-              Stack(
-                alignment: Alignment.bottomCenter,
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.only(left: 5, right: 5),
-                    width: double.infinity,
-                    child: SliderTheme(
-                      data: SliderTheme.of(context).copyWith(
-                        activeTrackColor: Colors.white,
-                        inactiveTrackColor: Colors.grey.shade600,
-                        activeTickMarkColor: Colors.white,
-                        thumbColor: Colors.white,
-                        trackHeight: 3,
-                        thumbShape: RoundSliderThumbShape(
-                          enabledThumbRadius: 4,
-                        ),
+                SizedBox(
+                  height: 100,
+                ),
+                Container(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(coverUrl),
+                  ),
+                  width: 325,
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 25, right: 25),
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(albumName,
+                              style: DashBoardTextStyles.mediumBoldText
+                                  .copyWith(color: Colors.white)),
+                          Text(bandName,
+                              style: DashBoardTextStyles.smallText.copyWith(
+                                color: Colors.grey.shade400,
+                              )),
+                        ],
                       ),
-                      child: Slider(
-                        value: (_position.inSeconds.toDouble() !=
-                            _duration.inSeconds.toDouble())
-                            ? _position.inSeconds.toDouble()
-                            : setChanged(),
-                        min: 0,
-                        max: _duration.inSeconds.toDouble(),
-                        onChanged: (double value) {
+                      IconButton(
+                        icon: (isHeartPressed == true)
+                            ? Icon(
+                                LineIcons.heart,
+                                color: Colors.green,
+                                size: 30,
+                              )
+                            : Icon(
+                                LineIcons.heart_o,
+                                color: Colors.grey.shade400,
+                                size: 30,
+                              ),
+                        onPressed: () {
                           setState(() {
-                            seekToSecond(value.toInt());
-                            value = value;
+                            isHeartPressed =
+                                (isHeartPressed == false) ? true : false;
                           });
                         },
                       ),
-                    ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, right: 25),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          "${_position.inMinutes.toInt()}:${(_position.inSeconds % 60).toString().padLeft(2, "0")}",
-                          style: DashBoardTextStyles.mediumBoldText.copyWith(color: Colors.grey.shade400)
-                        ),
-                        Text(
-                          "${_duration.inMinutes.toInt()}:${(_duration.inSeconds % 60).toString().padLeft(2, "0")}",
-                            style: DashBoardTextStyles.mediumBoldText.copyWith(color: Colors.grey.shade400)
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 22, right: 22),
-                width: double.infinity,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                Stack(
+                  alignment: Alignment.bottomCenter,
                   children: <Widget>[
-                    Icon(
-                      LineIcons.random,
-                      color: Colors.grey.shade400,
-                    ),
-                    Icon(
-                      Icons.skip_previous,
-                      color: Colors.white,
-                      size: 40,
-                    ),
                     Container(
-                      height: 90,
-                      width: 90,
-                      child: Center(
-                        child: IconButton(
-                          iconSize: 70,
-                          alignment: Alignment.center,
-                          icon: (isPlayPressed == true)
-                              ? Icon(
-                            Icons.pause_circle_filled,
-                            color: Colors.white,
-                          )
-                              : Icon(
-                            Icons.play_circle_filled,
-                            color: Colors.white,
+                      padding: EdgeInsets.only(left: 5, right: 5),
+                      width: double.infinity,
+                      child: SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          activeTrackColor: Colors.white,
+                          inactiveTrackColor: Colors.grey.shade600,
+                          activeTickMarkColor: Colors.white,
+                          thumbColor: Colors.white,
+                          trackHeight: 3,
+                          thumbShape: RoundSliderThumbShape(
+                            enabledThumbRadius: 4,
                           ),
-                          onPressed: () {
+                        ),
+                        child: Slider(
+                          value: (_position.inSeconds.toDouble() !=
+                                  _duration.inSeconds.toDouble())
+                              ? _position.inSeconds.toDouble()
+                              : setChanged(),
+                          min: 0,
+                          max: _duration.inSeconds.toDouble(),
+                          onChanged: (double value) {
                             setState(() {
-                              isPlayPressed =
-                              isPlayPressed == false ? true : false;
-                              if (isPlayPressed == true) {
-                                print("Playing .....");
-                                audioCache.play(
-                                  'taal_ko_paani.mp3',
-                                );
-                              } else {
-                                print("Paused .....");
-                                advancedPlayer.pause();
-                              }
+                              seekToSecond(value.toInt());
+                              value = value;
                             });
                           },
                         ),
                       ),
                     ),
-                    Icon(
-                      Icons.skip_next,
-                      color: Colors.white,
-                      size: 40,
-                    ),
-                    Icon(
-                      LineIcons.repeat,
-                      color: Colors.grey.shade400,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 22, right: 22),
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Icon(
-                      LineIcons.desktop,
-                      color: Colors.grey.shade400,
-                    ),
-                    Icon(
-                      LineIcons.list_alt,
-                      color: Colors.grey.shade400,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                              "${_position.inMinutes.toInt()}:${(_position.inSeconds % 60).toString().padLeft(2, "0")}",
+                              style: DashBoardTextStyles.mediumBoldText
+                                  .copyWith(color: Colors.grey.shade400)),
+                          Text(
+                              "${_duration.inMinutes.toInt()}:${(_duration.inSeconds % 60).toString().padLeft(2, "0")}",
+                              style: DashBoardTextStyles.mediumBoldText
+                                  .copyWith(color: Colors.grey.shade400)),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                Container(
+                  padding: EdgeInsets.only(left: 22, right: 22),
+                  width: double.infinity,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Icon(
+                        LineIcons.random,
+                        color: Colors.grey.shade400,
+                      ),
+                      Icon(
+                        Icons.skip_previous,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      Container(
+                        height: 90,
+                        width: 90,
+                        child: Center(
+                          child: IconButton(
+                            iconSize: 70,
+                            alignment: Alignment.center,
+                            icon: (isPlayPressed == true)
+                                ? Icon(
+                                    Icons.pause_circle_filled,
+                                    color: Colors.white,
+                                  )
+                                : Icon(
+                                    Icons.play_circle_filled,
+                                    color: Colors.white,
+                                  ),
+                            onPressed: () {
+                              setState(() {
+                                isPlayPressed =
+                                    isPlayPressed == false ? true : false;
+                                if (isPlayPressed == true) {
+                                  print('Playing .....');
+                                  audioCache.play(
+                                    'taal_ko_paani.mp3',
+                                  );
+                                } else {
+                                  print('Paused .....');
+                                  advancedPlayer.pause();
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      Icon(
+                        Icons.skip_next,
+                        color: Colors.white,
+                        size: 40,
+                      ),
+                      Icon(
+                        LineIcons.repeat,
+                        color: Colors.grey.shade400,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(left: 22, right: 22),
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Icon(
+                        LineIcons.desktop,
+                        color: Colors.grey.shade400,
+                      ),
+                      Icon(
+                        LineIcons.list_alt,
+                        color: Colors.grey.shade400,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
-    ),
     );
   }
 }

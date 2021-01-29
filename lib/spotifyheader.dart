@@ -191,12 +191,9 @@ class MyDelegate extends SliverPersistentHeaderDelegate {
               left: 0,
               right: 0,
               child: Center(
-                child: RaisedButton(
-                  color: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                    side: BorderSide(),
-                  ),
+                child: ElevatedButton(
+                  autofocus: false,
+                  clipBehavior: Clip.none,
                   onPressed: () {},
                   child: Padding(
                     padding:
